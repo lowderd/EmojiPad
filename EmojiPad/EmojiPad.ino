@@ -25,12 +25,16 @@
 //
 //      You should have received a copy of the GNU General Public License
 //      along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
 //*****************************************************************************
 
 #include <UsbKeyboard.h>
 #include "EmojiPad.h"
 
 // --- DEBUG MACROS -----------------------------------------------------------
+// These macros are used to blink the LED attached to D13. This allows for 
+// different sections of code to use the LED and not have to manually add and 
+// remove code to blink the LED. 
 
 // #define TIMER2_COMPA_DEBUG
 
@@ -101,7 +105,7 @@ void setup(){
 //
 //-----------------------------------------------------------------------------
 void loop(){
-    char key = getKey();
+    uint8_t key = getKey();
 
     // update USB device state
     UsbKeyboard.update();
@@ -123,58 +127,8 @@ void loop(){
     {
         digitalWrite(LED, 1);
 
-        switch(key) {
-            case EB_KEY0:
-                crazyFace();
-                break;
-            case EB_KEY1:
-                skepticalFace();
-                break;
-            case EB_KEY2:
-                smileyFace();
-                break;
-            case EB_KEY3:
-                // Not currently supported due to hardware issue
-                break;
-            case EB_KEY4:
-                sadFace();
-                break;
-            case EB_KEY5:
-                cryingFace();
-                break;
-            case EB_KEY6:
-                seriousFace();
-                break;
-            case EB_KEY7:
-                // Not currently supported due to hardware issue
-                break;
-            case EB_KEY8:
-                shyFace();
-                break;
-            case EB_KEY9:
-                bigSmileFace();
-                break;
-            case EB_KEY10:
-                angryFace();
-                break;
-            case EB_KEY11:
-                // Not currently supported due to hardware issue
-                break;
-            case EB_KEY12:
-                cat();
-                break;
-            case EB_KEY13:
-                emohFace();
-                break;
-            case EB_KEY14:
-                mouse();
-                break;
-            case EB_KEY15:
-                // Not currently supported due to hardware issue
-                break;
-            default:
-                break;
-        }
+        // emoticonBtnMap(key);
+        mediaPlayerBtnMap(key);
 
         delay(20);
         
@@ -202,6 +156,7 @@ void smileyFace() {
 void sadFace() {
     UsbKeyboard.sendKeyStroke(KEY_COLON, MOD_SHIFT_LEFT);
     UsbKeyboard.sendKeyStroke(KEY_9, MOD_SHIFT_LEFT);
+
 }
 
 // ;(
@@ -287,6 +242,153 @@ void mouse() {
     UsbKeyboard.sendKeyStroke(KEY_TILDE, MOD_SHIFT_LEFT);
 }
 
+
+// --- BUTTON MAPS ------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+//
+//  EmoticonButtonMap
+//
+//  Description:
+//      This function contains that switch statement used to map the button 
+//      presses to standard text emoticons. 
+//
+//  Entry:
+//      key - Current key that is pressed
+//
+//  Exit:
+//      None
+//
+//-----------------------------------------------------------------------------
+void emoticonBtnMap(uint8_t key) {
+    switch(key) {
+            case EB_KEY0:
+                crazyFace();
+                break;
+            case EB_KEY1:
+                skepticalFace();
+                break;
+            case EB_KEY2:
+                smileyFace();
+                break;
+            case EB_KEY3:
+                // Not currently supported due to hardware issue
+                break;
+            case EB_KEY4:
+                sadFace();
+                break;
+            case EB_KEY5:
+                cryingFace();
+                break;
+            case EB_KEY6:
+                seriousFace();
+                break;
+            case EB_KEY7:
+                // Not currently supported due to hardware issue
+                break;
+            case EB_KEY8:
+                shyFace();
+                break;
+            case EB_KEY9:
+                bigSmileFace();
+                break;
+            case EB_KEY10:
+                angryFace();
+                break;
+            case EB_KEY11:
+                // Not currently supported due to hardware issue
+                break;
+            case EB_KEY12:
+                cat();
+                break;
+            case EB_KEY13:
+                emohFace();
+                break;
+            case EB_KEY14:
+                mouse();
+                break;
+            case EB_KEY15:
+                // Not currently supported due to hardware issue
+                break;
+            default:
+                break;
+        }
+}
+
+//-----------------------------------------------------------------------------
+//
+//  mediaPlayerBtnMap
+//
+//  Description: 
+//      This function contains the button map for the keypad to control
+//      multimedia applications on the computed. The following functions are 
+//      currently supported:
+//          - Volume Up
+//          - Volume Down
+//          - Mute
+//
+//  Entry:
+//      key - Current key that is being pressed
+//
+//  Exit:
+//      None
+//
+//-----------------------------------------------------------------------------
+void mediaPlayerBtnMap(uint8_t key) {
+    switch(key) {
+            case EB_KEY0:
+                
+                break;
+            case EB_KEY1:
+                
+                break;
+            case EB_KEY2:
+                
+                break;
+            case EB_KEY3:
+                // Not currently supported due to hardware issue
+                break;
+            case EB_KEY4:
+                
+                break;
+            case EB_KEY5:
+                
+                break;
+            case EB_KEY6:
+                
+                break;
+            case EB_KEY7:
+                // Not currently supported due to hardware issue
+                break;
+            case EB_KEY8:
+                
+                break;
+            case EB_KEY9:
+                
+                break;
+            case EB_KEY10:
+                
+                break;
+            case EB_KEY11:
+                // Not currently supported due to hardware issue
+                break;
+            case EB_KEY12:
+                UsbKeyboard.sendKeyStroke(KEY_VOL_UP);
+                break;
+            case EB_KEY13:
+                UsbKeyboard.sendKeyStroke(KEY_VOL_DOWN);
+                break;
+            case EB_KEY14:
+                UsbKeyboard.sendKeyStroke(KEY_MUTE);
+                break;
+            case EB_KEY15:
+                // Not currently supported due to hardware issue
+                break;
+            default:
+                break;
+        }
+}
+
 // --- SUPPORT FUNCTIONS ------------------------------------------------------
 
 //-----------------------------------------------------------------------------
@@ -319,6 +421,12 @@ void delayMs(unsigned int ms) {
 //      This function initializes TIMER2 COMPA to interrupt every millisecond.
 //      For this to occur, a prescaler of 64 is used, and the compare match 
 //      register is set to 250. (16000000Hz/64/250 = 1000Hz)
+//
+//  Entry:
+//      None
+//
+//  Exit:
+//      None
 //
 //-----------------------------------------------------------------------------
 bool initTimer2() {
@@ -406,6 +514,12 @@ uint32_t millis2() {
 //      The pressed keys are represented by a 1 in a globally defined bitmap 
 //      named bit_map. The bit_map is then used by the updateList function to 
 //      determine which keys are currently active. 
+//
+//  Entry:
+//      None
+//
+//  Exit:
+//      None
 //
 //-----------------------------------------------------------------------------
 void scanKeys() {
