@@ -105,22 +105,11 @@ void setup(){
 //
 //-----------------------------------------------------------------------------
 void loop(){
+    // Local Variables
     uint8_t key = getKey();
 
     // update USB device state
     UsbKeyboard.update();
-
-    // check, if transition to button-pressed has occured
-    if( (digitalRead(PIN_BUTTON) == HIGH) && (lastState==LOW) ) {
-        UsbKeyboard.sendKeyStroke(KEY_A); // if so, send the letter 'a' via USB keyboard
-        lastState = HIGH; // update the state variable
-        delay(10); // simple de-bouncing
-    // check, if the button was released
-    } 
-    else if( (digitalRead(PIN_BUTTON) == LOW) && (lastState==HIGH) ) {
-        lastState = LOW; // if so, update the state variable
-        delay(10); // simple de-bouncing
-    }
 
     // Toggle LED every second
     if((key != -1) && (lastState == LOW))
@@ -131,19 +120,16 @@ void loop(){
         mediaPlayerBtnMap(key);
 
         delay(20);
-        
-    }
-    else
-    {
+
         digitalWrite(LED, 0);
-        delay(10);
+        
     }
 
 }
 
 
 //--- Emoticon Functions ------------------------------------------------------
-// These are simple keyboard based emoticons, non of them require unicode 
+// These are simple keyboard based emoticons, none of them require unicode 
 // characters. 
 
 // :)
@@ -245,6 +231,7 @@ void mouse() {
 
 // --- BUTTON MAPS ------------------------------------------------------------
 
+
 //-----------------------------------------------------------------------------
 //
 //  EmoticonButtonMap
@@ -314,6 +301,7 @@ void emoticonBtnMap(uint8_t key) {
                 break;
         }
 }
+
 
 //-----------------------------------------------------------------------------
 //
@@ -388,6 +376,80 @@ void mediaPlayerBtnMap(uint8_t key) {
                 break;
         }
 }
+
+
+//-----------------------------------------------------------------------------
+//
+//  btnMapTemplate
+//
+//  Description:
+//      This is a template for a button map. Copy this, use a descriptive name
+//      for the type of button map and add ther BtnMap suffix to the function.
+//      
+//      Change the case statements to call a function or the button presses
+//      needed to execute what you would like. 
+//
+//  Entry:
+//      key - Current key that is being pressed
+//
+//  Exit:
+//      None
+//
+//-----------------------------------------------------------------------------
+// void btnMapTemplate(uint8_t key) {
+//     switch(key) {
+//             case EB_KEY0:
+                
+//                 break;
+//             case EB_KEY1:
+                
+//                 break;
+//             case EB_KEY2:
+                
+//                 break;
+//             case EB_KEY3:
+                
+//                 break;
+//             case EB_KEY4:
+                
+//                 break;
+//             case EB_KEY5:
+                
+//                 break;
+//             case EB_KEY6:
+                
+//                 break;
+//             case EB_KEY7:
+                
+//                 break;
+//             case EB_KEY8:
+                
+//                 break;
+//             case EB_KEY9:
+                
+//                 break;
+//             case EB_KEY10:
+                
+//                 break;
+//             case EB_KEY11:
+                
+//                 break;
+//             case EB_KEY12:
+                
+//                 break;
+//             case EB_KEY13:
+                
+//                 break;
+//             case EB_KEY14:
+                
+//                 break;
+//             case EB_KEY15:
+                
+//                 break;
+//             default:
+//                 break;
+//         }
+// }
 
 // --- SUPPORT FUNCTIONS ------------------------------------------------------
 

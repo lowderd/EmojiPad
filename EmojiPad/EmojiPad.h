@@ -116,7 +116,7 @@ key keys_active[MAX_KEYS_ACTIVE];
 
 uint32_t start_time;
 uint32_t debounce_time = 10;
-uint32_t hold_time = 500;
+uint32_t hold_time = 250;
 
 uint32_t prevTime;
 uint32_t elapsedTimeMs;
