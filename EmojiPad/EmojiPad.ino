@@ -377,6 +377,75 @@ void mediaPlayerBtnMap(uint8_t key) {
         }
 }
 
+//-----------------------------------------------------------------------------
+//
+//  sketchupBtnMap
+//
+//  Description:
+//      This is a button map containing hot keys for Google Sketchup
+//
+//  Entry:
+//      key - Current key that is being pressed
+//
+//  Exit:
+//      None
+//
+//-----------------------------------------------------------------------------
+void sketchUpBtnMap(uint8_t key) {
+    switch(key) {
+            case EB_KEY0:
+                
+                break;
+            case EB_KEY1:
+                
+                break;
+            case EB_KEY2:
+                
+                break;
+            case EB_KEY3:
+                
+                break;
+            case EB_KEY4:
+                
+                break;
+            case EB_KEY5:
+                
+                break;
+            case EB_KEY6:
+                
+                break;
+            case EB_KEY7:
+                
+                break;
+            case EB_KEY8:
+                
+                break;
+            case EB_KEY9:
+                
+                break;
+            case EB_KEY10:
+                
+                break;
+            case EB_KEY11:
+                
+                break;
+            case EB_KEY12:
+                
+                break;
+            case EB_KEY13:
+                
+                break;
+            case EB_KEY14:
+                
+                break;
+            case EB_KEY15:
+                
+                break;
+            default:
+                break;
+        }
+}
+
 
 //-----------------------------------------------------------------------------
 //
