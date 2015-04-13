@@ -116,8 +116,8 @@ void loop(){
     {
         digitalWrite(LED, 1);
 
-        // emoticonBtnMap(key);
-        mediaPlayerBtnMap(key);
+        emoticonBtnMap(key);
+        // mediaPlayerBtnMap(key);
 
         delay(20);
 
@@ -228,6 +228,34 @@ void mouse() {
     UsbKeyboard.sendKeyStroke(KEY_TILDE, MOD_SHIFT_LEFT);
 }
 
+// (╯°□°)╯︵ ┻━┻
+void throwingTable() {
+    UsbKeyboard.sendUnicodeKeyStroke(left_parenthesis, sizeof(left_parenthesis));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(arc_up_and_left, sizeof(arc_up_and_left));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(degree_sign, sizeof(degree_sign));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(white_square, sizeof(white_square));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(degree_sign, sizeof(degree_sign));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(right_parenthesis, sizeof(right_parenthesis));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(arc_up_and_left, sizeof(arc_up_and_left));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(vertical_left_parenthesis, sizeof(vertical_left_parenthesis));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(space, sizeof(space));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(heavy_up_horizontal, sizeof(heavy_up_horizontal));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(heavy_horizontal, sizeof(heavy_horizontal));
+    delay(10);
+    UsbKeyboard.sendUnicodeKeyStroke(heavy_up_horizontal, sizeof(heavy_up_horizontal));
+}
+
+// --- UNICODE CHARACTERS -----------------------------------------------------
 
 // --- BUTTON MAPS ------------------------------------------------------------
 
@@ -249,57 +277,57 @@ void mouse() {
 //-----------------------------------------------------------------------------
 void emoticonBtnMap(uint8_t key) {
     switch(key) {
-            case EB_KEY0:
-                crazyFace();
-                break;
-            case EB_KEY1:
-                skepticalFace();
-                break;
-            case EB_KEY2:
-                smileyFace();
-                break;
-            case EB_KEY3:
-                // Not currently supported due to hardware issue
-                break;
-            case EB_KEY4:
-                sadFace();
-                break;
-            case EB_KEY5:
-                cryingFace();
-                break;
-            case EB_KEY6:
-                seriousFace();
-                break;
-            case EB_KEY7:
-                // Not currently supported due to hardware issue
-                break;
-            case EB_KEY8:
-                shyFace();
-                break;
-            case EB_KEY9:
-                bigSmileFace();
-                break;
-            case EB_KEY10:
-                angryFace();
-                break;
-            case EB_KEY11:
-                // Not currently supported due to hardware issue
-                break;
-            case EB_KEY12:
-                cat();
-                break;
-            case EB_KEY13:
-                emohFace();
-                break;
-            case EB_KEY14:
-                mouse();
-                break;
-            case EB_KEY15:
-                // Not currently supported due to hardware issue
-                break;
-            default:
-                break;
-        }
+        case EB_KEY0:
+            crazyFace();
+            break;
+        case EB_KEY1:
+            skepticalFace();
+            break;
+        case EB_KEY2:
+            smileyFace();
+            break;
+        case EB_KEY3:
+            // Not currently supported due to hardware issue
+            break;
+        case EB_KEY4:
+            sadFace();
+            break;
+        case EB_KEY5:
+            cryingFace();
+            break;
+        case EB_KEY6:
+            seriousFace();
+            break;
+        case EB_KEY7:
+            // Not currently supported due to hardware issue
+            break;
+        case EB_KEY8:
+            shyFace();
+            break;
+        case EB_KEY9:
+            bigSmileFace();
+            break;
+        case EB_KEY10:
+            angryFace();
+            break;
+        case EB_KEY11:
+            // Not currently supported due to hardware issue
+            break;
+        case EB_KEY12:
+            cat();
+            break;
+        case EB_KEY13:
+            emohFace();
+            break;
+        case EB_KEY14:
+            throwingTable();
+            break;
+        case EB_KEY15:
+            // Not currently supported due to hardware issue
+            break;
+        default:
+            break;
+    }
 }
 
 
@@ -324,57 +352,57 @@ void emoticonBtnMap(uint8_t key) {
 //-----------------------------------------------------------------------------
 void mediaPlayerBtnMap(uint8_t key) {
     switch(key) {
-            case EB_KEY0:
-                
-                break;
-            case EB_KEY1:
-                
-                break;
-            case EB_KEY2:
-                
-                break;
-            case EB_KEY3:
-                // Not currently supported due to hardware issue
-                break;
-            case EB_KEY4:
-                
-                break;
-            case EB_KEY5:
-                
-                break;
-            case EB_KEY6:
-                
-                break;
-            case EB_KEY7:
-                // Not currently supported due to hardware issue
-                break;
-            case EB_KEY8:
-                
-                break;
-            case EB_KEY9:
-                
-                break;
-            case EB_KEY10:
-                
-                break;
-            case EB_KEY11:
-                // Not currently supported due to hardware issue
-                break;
-            case EB_KEY12:
-                UsbKeyboard.sendKeyStroke(KEY_VOL_UP);
-                break;
-            case EB_KEY13:
-                UsbKeyboard.sendKeyStroke(KEY_VOL_DOWN);
-                break;
-            case EB_KEY14:
-                UsbKeyboard.sendKeyStroke(KEY_MUTE);
-                break;
-            case EB_KEY15:
-                // Not currently supported due to hardware issue
-                break;
-            default:
-                break;
-        }
+        case EB_KEY0:
+            
+            break;
+        case EB_KEY1:
+            
+            break;
+        case EB_KEY2:
+            
+            break;
+        case EB_KEY3:
+            // Not currently supported due to hardware issue
+            break;
+        case EB_KEY4:
+            
+            break;
+        case EB_KEY5:
+            
+            break;
+        case EB_KEY6:
+            
+            break;
+        case EB_KEY7:
+            // Not currently supported due to hardware issue
+            break;
+        case EB_KEY8:
+            
+            break;
+        case EB_KEY9:
+            
+            break;
+        case EB_KEY10:
+            
+            break;
+        case EB_KEY11:
+            // Not currently supported due to hardware issue
+            break;
+        case EB_KEY12:
+            UsbKeyboard.sendKeyStroke(KEY_VOL_UP);
+            break;
+        case EB_KEY13:
+            UsbKeyboard.sendKeyStroke(KEY_VOL_DOWN);
+            break;
+        case EB_KEY14:
+            UsbKeyboard.sendKeyStroke(KEY_MUTE);
+            break;
+        case EB_KEY15:
+            // Not currently supported due to hardware issue
+            break;
+        default:
+            break;
+    }
 }
 
 
@@ -491,7 +519,7 @@ void delayMs(unsigned int ms) {
 //      None
 //
 //-----------------------------------------------------------------------------
-bool initTimer2() {
+void initTimer2() {
     // Disable interrupts
     cli();
 
