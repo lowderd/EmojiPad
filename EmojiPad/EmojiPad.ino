@@ -116,8 +116,8 @@ void loop(){
     {
         digitalWrite(LED, 1);
 
-        emoticonBtnMap(key);
-        // mediaPlayerBtnMap(key);
+        // emoticonBtnMap(key);
+        mediaPlayerBtnMap(key);
 
         delay(20);
 
@@ -371,19 +371,19 @@ void mediaPlayerBtnMap(uint8_t key) {
             
             break;
         case EB_KEY6:
-            
+            UsbKeyboard.sendKeyStroke(KEY_STOP);
             break;
         case EB_KEY7:
             // Not currently supported due to hardware issue
             break;
         case EB_KEY8:
-            
+            UsbKeyboard.sendKeyStroke(KEY_NEXT_TRACK);
             break;
         case EB_KEY9:
-            
+            UsbKeyboard.sendKeyStroke(0xCD);
             break;
         case EB_KEY10:
-            
+            UsbKeyboard.sendKeyStroke(KEY_PREVIOUS_TRACK);
             break;
         case EB_KEY11:
             // Not currently supported due to hardware issue

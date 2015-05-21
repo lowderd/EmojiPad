@@ -29,21 +29,61 @@
 #ifndef __EmojiPad_h__
 #define __EmojiPad_h__
 
+// --- Config Flags -----------------------------------------------------------
+// Temporary Hardware Coniguration Flags
+// These should be moved to a separate configuration file that is included 
+// during compilation. 
+#define EMOJI_PAD
+
 
 // --- Global Constants -------------------------------------------------------
 
 // Pin Declarations
-#define COL0 3
-#define COL1 5
-#define COL2 6
-#define COL3 12
-#define ROW0 8
-#define ROW1 9
-#define ROW2 10
-#define ROW3 11
-#define LED  13
+// All pin mappings reference the default Arduino pin values, may want to 
+// change this to AVR port mapping values
+#ifdef EMOJI_PAD
+	// Keypad Matrix Pinout
+	#define COL0 3
+	#define COL1 5
+	#define COL2 6
+	#define COL3 12
+	#define ROW0 8
+	#define ROW1 9
+	#define ROW2 10
+	#define ROW3 11
 
-#define PIN_BUTTON 	7 // the button is attached to pin 7
+	// LED Matrix Pinout (Charliplexed)
+	#define LED0 15
+	#define LED1 16
+	#define LED2 17
+	#define LED3 18
+	#define LED4 19	
+#endif	// EMOJI_PAD
+
+#ifdef FOUR_SQUARED
+	// Keypad Matrix Pinout
+	#define COL0 2
+	#define COL1 3
+	#define COL2 4
+	#define COL3 5
+	#define ROW0 8
+	#define ROW1 9
+	#define ROW2 10
+	#define ROW3 11
+
+	// LED Matrix Pinout (Standard)
+	// D13 are connected to different LEDs
+	#define LED_COL0 6
+	#define LED_COL1 7
+	#define LED_COL2 12
+	#define LED_COL3 14
+	#define LED_ROW0 15
+	#define LED_ROW1 16
+	#define LED_ROW2 18 
+	#define LED_ROW3 19
+#endif	// FOUR_SQUARED
+
+#define LED  13
 
 // Button States 
 #define IDLE 		0
