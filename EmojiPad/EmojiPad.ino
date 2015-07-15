@@ -116,8 +116,8 @@ void loop(){
     {
         digitalWrite(LED, 1);
 
-        // emoticonBtnMap(key);
-        mediaPlayerBtnMap(key);
+        emoticonBtnMap(key);
+        // mediaPlayerBtnMap(key);
 
         delay(20);
 
